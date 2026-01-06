@@ -1,13 +1,27 @@
 import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: "Mestre Reginaldo - Consultoria Espiritual e Amarração Amorosa",
-  description: "Especialista em união de casais, limpeza espiritual e abertura de caminhos. Atendimento no Brasil e Portugal.",
+  description: "Especialista em rituais ancestrais para união de casais e limpeza espiritual. Atendimento Brasil e Portugal.",
   alternates: {
-    canonical: "https://mestrereginaldo.com.br",
     languages: {
-      "pt-BR": "https://mestrereginaldo.com.br/br",
-      "pt-PT": "https://mestrereginaldo.com.br/pt",
+      "pt-BR": "/",
+      "pt-PT": "/pt",
     },
   },
 };
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="pt">
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
+        {children}
+      </body>
+    </html>
+  );
+}
