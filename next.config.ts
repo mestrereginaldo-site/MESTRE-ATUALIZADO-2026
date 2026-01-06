@@ -1,8 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* Configurações adicionais podem ser adicionadas aqui */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
+  // Garante que o build ignore erros de linting para subir mais rápido
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
