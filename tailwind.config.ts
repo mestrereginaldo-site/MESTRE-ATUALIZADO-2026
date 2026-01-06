@@ -1,14 +1,12 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
         mocha: {
-          800: '#4a372f', // Cor de 2026: Mocha Mousse 
+          800: '#4a372f', // Mocha Mousse 2026 
           900: '#2d1f1a',
         },
         gold: {
@@ -17,15 +15,7 @@ const config: Config = {
           dark: '#B8860B',
         },
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-      },
+      animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' },
     },
   },
   plugins:,
