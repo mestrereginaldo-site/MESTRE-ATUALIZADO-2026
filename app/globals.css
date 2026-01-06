@@ -2,25 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --mocha-dark: #2d1f1a;
-}
-
 body {
-  background-color: var(--mocha-dark);
+  background: #2d1f1a;
   color: white;
-  margin: 0;
-  font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
 }
 
 .glass {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .gold-glow {
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
 }
