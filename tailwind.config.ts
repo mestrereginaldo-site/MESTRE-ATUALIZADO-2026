@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         mocha: {
-          800: '#4a372f', // Cor Mocha Mousse 
+          800: '#4a372f', // Cor Pantone 2026
           900: '#2d1f1a',
         },
         gold: {
