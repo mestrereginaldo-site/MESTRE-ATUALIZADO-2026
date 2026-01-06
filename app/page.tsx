@@ -8,7 +8,7 @@ export default function LandingPage() {
   const zapLink = `https://wa.me/${zapNumber}?text=Mestre,%20preciso%20de%20ajuda%20espiritual%20urgente`;
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // LISTA DE SERVIÇOS - CORRIGIDA
+  // LISTA DE SERVIÇOS - CORRIGIDA E COMPLETA [4, 5]
   const services =;
 
   return (
@@ -23,14 +23,14 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="text-gold tracking-[0.5em] text-[10px] font-bold mb-8 uppercase"
           >
-            BRASIL • PORTUGAL • EUROPA
+            A Maior Autoridade em Alta Magia Brasil & Portugal
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
             className="text-5xl md:text-9xl font-serif mb-10 leading-tight text-white"
           >
-            Seu Destino <br />
+            Seu Futuro <br />
             <span className="text-gold italic font-light font-serif">Transformado</span>
           </motion.h1>
 
@@ -43,7 +43,7 @@ export default function LandingPage() {
               QUERO MINHA CONSULTA
             </button>
             <p className="mt-6 text-mocha-300 text-sm font-light">
-              Mestre Reginaldo: 30 anos de sabedoria transformando vidas.
+              Mestre Reginaldo: 30 anos transformando destinos com verdade e sigilo.
             </p>
           </motion.div>
         </div>
@@ -77,18 +77,7 @@ export default function LandingPage() {
         <p className="text-gold font-bold tracking-widest uppercase">— Maria João, Lisboa (PT)</p>
       </section>
 
-      {/* FOOTER */}
-      <footer className="py-20 text-center border-t border-white/5">
-        <h2 className="text-white text-3xl font-serif mb-8">Sua felicidade não pode esperar.</h2>
-        <button 
-          onClick={() => window.open(zapLink, "_blank")}
-          className="text-gold border border-gold/30 hover:bg-gold hover:text-mocha-900 py-4 px-10 rounded-full transition-all"
-        >
-          Falar no WhatsApp agora
-        </button>
-      </footer>
-
-      {/* CUSTOM WHATSAPP WIDGET */}
+      {/* CUSTOM WHATSAPP WIDGET (Nativo, sem erros externos) */}
       <div className="fixed bottom-8 right-8 z-50">
         <AnimatePresence>
           {isChatOpen && (
@@ -115,12 +104,12 @@ export default function LandingPage() {
                   Olá! Sou o Mestre Reginaldo. O que te trouxe até mim hoje? Posso te guiar para a solução.
                 </div>
               </div>
-              <div className="p-4 bg-white">
+              <div className="p-4 bg-white text-center">
                 <button 
                   onClick={() => window.open(zapLink, "_blank")}
                   className="w-full bg-[#25d366] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#128c7e] transition-all"
                 >
-                  <Send size={18} /> Iniciar conversa no WhatsApp
+                  <Send size={18} /> Iniciar no WhatsApp
                 </button>
               </div>
             </motion.div>
