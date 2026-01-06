@@ -1,59 +1,56 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { MessageCircle, Sparkles, Heart, ShieldCheck, Zap, Star } from "lucide-react";
-import { FloatingWhatsApp } from "@dxkit-org/react-floating-whatsapp";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, Sparkles, Heart, ShieldCheck, Zap, Star, X, Send } from "lucide-react";
 
 export default function LandingPage() {
-  const zapNumber = "5511XXXXXXXXX"; // TROQUE PELO SEU NÚMERO
-  const zapLink = `https://wa.me/${zapNumber}?text=Mestre,%20vi%20seu%20site%20e%20preciso%20de%20ajuda%20urgente.`;
+  const zapNumber = "5511XXXXXXXXX"; // Substitua pelo seu número
+  const zapLink = `https://wa.me/${zapNumber}?text=Mestre,%20preciso%20de%20ajuda%20urgente`;
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const services =;
 
   return (
-    <main className="relative min-h-screen bg-mocha-900">
-      {/* 1. HERO - IMPACTO VISUAL */}
+    <main className="relative min-h-screen bg-mocha-900 selection:bg-gold selection:text-mocha-900">
+      {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center text-center px-6">
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-mocha-800/40 to-transparent" />
         
         <div className="z-10 max-w-5xl">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="text-gold tracking-[0.5em] text-[10px] font-bold mb-8 uppercase"
           >
             A Maior Autoridade Espiritual do Brasil e Portugal
           </motion.div>
           
           <motion.h1 
-            initial={{ opacity: 0, scale: 0.9 }} 
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
             className="text-5xl md:text-9xl font-serif mb-10 leading-tight text-white"
           >
-            Sua Vida <br />
-            <span className="text-gold italic font-light">Transformada</span>
+            Seu Destino <br />
+            <span className="text-gold italic font-light">Transformado</span>
           </motion.h1>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
             <button 
-              onClick={() => window.open(zapLink, "_blank")}
-              className="bg-gold hover:bg-gold-dark text-mocha-900 font-black py-6 px-14 rounded-full text-xl gold-glow transition-all transform hover:scale-110 active:scale-95 flex items-center gap-4 mx-auto"
+              onClick={() => setIsChatOpen(true)}
+              className="bg-gold hover:bg-gold-dark text-mocha-900 font-black py-6 px-14 rounded-full text-xl gold-glow transition-all transform hover:scale-110 flex items-center gap-4 mx-auto"
             >
-              <MessageCircle size={28} className="animate-pulse" />
-              QUERO MINHA CONSULTA AGORA
+              <MessageCircle size={28} className="animate-bounce" />
+              INICIAR MINHA MUDANÇA
             </button>
-            <p className="mt-6 text-mocha-300 text-sm font-light">Atendimento Imediato • Sigilo Absoluto • Resultados Reais</p>
-          </motion.div>
+            <p className="mt-6 text-mocha-300 text-sm font-light">Resultados Rápidos • Sigilo Total • Tradição Ancestral</p>
+          </div>
         </div>
       </section>
 
-      {/* 2. SERVIÇOS - GLASSMORPHISM CARDS  */}
+      {/* SERVICES */}
       <section className="py-24 px-6 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((item, i) => (
             <motion.div 
-              key={i} 
-              whileHover={{ y: -15, backgroundColor: "rgba(255,255,255,0.06)" }}
+              key={i} whileHover={{ y: -15 }}
               className="glass p-12 rounded-[50px] text-center border border-white/5 transition-all"
             >
               <div className="text-gold mb-8 flex justify-center">{item.icon}</div>
@@ -64,30 +61,68 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 3. PROVA SOCIAL [3, 4] */}
-      <section className="py-24 text-center px-6">
+      {/* TESTIMONIALS [2] */}
+      <section className="py-24 text-center px-6 bg-mocha-800/20">
         <div className="flex justify-center gap-2 text-gold mb-8">
           {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={24} />)}
         </div>
-        <h2 className="text-3xl md:text-5xl italic max-w-4xl mx-auto mb-10 leading-snug font-light text-mocha-100">
-          "Em menos de 21 dias, recuperei o amor que achei ter perdido e meus caminhos financeiros se abriram de forma milagrosa. Gratidão, Mestre!"
+        <h2 className="text-3xl md:text-5xl italic max-w-4xl mx-auto mb-10 font-light text-mocha-100">
+          "Em 21 dias, o que parecia impossível aconteceu. Minha família foi restaurada e recuperei a paz que havia perdido. Gratidão ao Mestre."
         </h2>
         <p className="text-gold font-bold tracking-widest">— Maria João, Lisboa (PT)</p>
       </section>
 
-      {/* 4. WHATSAPP FLOATING WIDGET  */}
-      <FloatingWhatsApp
-        phoneNumber={zapNumber}
-        accountName="Mestre Reginaldo"
-        avatar="/avatar-mestre.jpg"
-        statusMessage="Online agora"
-        chatMessage="Seja bem-vindo(a). Sou o Mestre Reginaldo. Como posso guiar sua jornada hoje?"
-        placeholder="Escreva sua mensagem..."
-        darkMode={true}
-        allowClickAway={true}
-        notification={true}
-        className="z-50"
-      />
+      {/* CUSTOM WHATSAPP WIDGET (Elimina o erro 404) */}
+      <div className="fixed bottom-8 right-8 z-50">
+        <AnimatePresence>
+          {isChatOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 50, scale: 0.8 }}
+              className="mb-4 w-80 bg-white rounded-3xl shadow-2xl overflow-hidden text-black"
+            >
+              <div className="bg-[#075e54] p-6 text-white flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold">M</div>
+                  <div>
+                    <p className="font-bold text-sm">Mestre Reginaldo</p>
+                    <p className="text-[10px] opacity-80 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" /> Online agora
+                    </p>
+                  </div>
+                </div>
+                <button onClick={() => setIsChatOpen(false)}><X size={20}/></button>
+              </div>
+              <div className="p-6 bg-[#e5ddd5] min-h-[100px]">
+                <div className="bg-white p-3 rounded-xl rounded-tl-none shadow-sm text-sm inline-block max-w-[90%]">
+                  Olá! Sou o Mestre Reginaldo. O que te aflige hoje? Posso te ajudar na sua jornada espiritual.
+                </div>
+              </div>
+              <div className="p-4 bg-white">
+                <button 
+                  onClick={() => window.open(zapLink, "_blank")}
+                  className="w-full bg-[#25d366] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#128c7e] transition-all"
+                >
+                  <Send size={18} /> Iniciar conversa no WhatsApp
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          className="bg-[#25d366] text-white p-5 rounded-full shadow-2xl relative"
+        >
+          <MessageCircle size={32} />
+          {!isChatOpen && (
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-[10px] font-bold">1</span>
+          )}
+        </motion.button>
+      </div>
     </main>
   );
 }
