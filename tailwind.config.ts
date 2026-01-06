@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         mocha: {
-          800: '#4a372f', // Mocha Mousse 2026 
+          800: '#4a372f', // Cor Mocha Mousse 
           900: '#2d1f1a',
         },
         gold: {
@@ -15,7 +15,10 @@ const config: Config = {
           dark: '#B8860B',
         },
       },
-      animation: { 'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite' },
+      fontFamily: {
+        serif: ['var(--font-playfair)', 'serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+      },
     },
   },
   plugins:,
