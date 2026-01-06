@@ -2,9 +2,8 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -18,8 +17,8 @@ const config: Config = {
           500: '#8c6d62',
           600: '#75584f',
           700: '#5e463f',
-          800: '#4a372f', // Mocha Mousse Oficial
-          900: '#3d2e27',
+          800: '#4a372f', // Mocha Mousse Oficial [1]
+          900: '#2d1f1a',
         },
         gold: {
           light: '#F9E4B7',
@@ -40,9 +39,6 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
-      },
-      backdropBlur: {
-        xs: '2px',
       },
     },
   },
